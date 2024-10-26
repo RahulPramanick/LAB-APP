@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>836</width>
+    <height>634</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#ipAddress[state = &quot;0&quot;]{
+	background-color: rgba(254, 95, 85, 0.2); /* Lighter soft red tint for error */
+}
+#ipAddress[state = &quot;1&quot;]{
+	background-color: rgba(176, 208, 211, 0.2); /* Lighter soft pink tint for success */
+}
+/* Main Window */
+QMainWindow {
+    background-color: rgb(51, 55, 69);  /* Dark main text color */
+    color: rgb(255, 255, 255);  /* White text */
+}
+
+/* All widgets inside the Main Window */
+QMainWindow QWidget {
+    background-color: white;
+    color: rgb(51, 55, 69);  /* Dark text */
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+}
+
+/* Line Edits */
+QLineEdit {
+    padding: 8px;
+    border: 1px solid rgba(230, 52, 98, 0.3); /* Subtle red border */
+    border-radius: 4px;
+    background-color: white;
+    color: rgb(51, 55, 69);
+    selection-background-color: rgb(230, 52, 98); /* Red for text selection */
+    selection-color: white;
+}
+
+QLineEdit:focus {
+    border: 2px solid rgb(230, 52, 98); /* Stronger focus color */
+}
+
+QLineEdit:disabled {
+    background-color: rgba(230, 52, 98, 0.1); /* Faded red when disabled */
+    border: 1px solid rgba(230, 52, 98, 0.3);
+}
+
+/* Push Buttons */
+QPushButton {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                      stop: 0 rgb(230, 52, 98), 
+                                      stop: 1 rgb(254, 95, 85));  /* Gradient between highlight colors */
+    color: white;
+    border: 1px solid rgba(230, 52, 98, 0.6);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                      stop: 0 rgb(254, 95, 85), 
+                                      stop: 1 rgb(230, 52, 98));  /* Reversed gradient on hover */
+}
+
+QPushButton:pressed {
+    background-color: rgb(230, 52, 98);  /* Darker red when pressed */
+}
+
+QPushButton:disabled {
+    background-color: rgba(230, 52, 98, 0.4);  /* Softer red when disabled */
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ComboBox */
+QComboBox {
+    border: 1px solid rgb(230, 52, 98);
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+    color: rgb(51, 55, 69);
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    selection-background-color: rgb(230, 52, 98); /* Red on selection */
+}
+
+/* Checkboxes */
+QCheckBox {
+    spacing: 15px; /* Add spacing between the checkbox text */
+    background-color: transparent; /* Transparent background */
+    color: rgb(51, 55, 69); /* Dark color for unchecked text */
+}
+
+
+QCheckBox:unchecked {
+    color: rgb(51, 55, 69); /* Dark color for unchecked text */
+}
+
+QCheckBox:checked {
+    color: rgb(230, 52, 98); /* Highlight text in pink when checked */
+}
+
+QCheckBox:hover {
+    color: rgb(254, 95, 85); /* Text changes to a lighter red on hover */
+}
+
+QCheckBox:disabled {
+    color: rgb(170, 170, 170); /* Softer color for disabled state */
+}
+
+/* Labels */
+QLabel {
+    background-color: transparent;
+    color: rgb(51, 55, 69);  /* Dark color text */
+}
+
+/* Group Box */
+QGroupBox {
+    border: 1px solid rgb(230, 52, 98);
+    border-radius: 6px;
+    margin-top: 0.8em; /* Slight increase in margin to avoid border overlap */
+    padding: 10px;
+    background-color: white;
+}
+
+QGroupBox::title {
+    color: rgb(230, 52, 98);
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* Keep title at top-left */
+    padding: 0 5px; /* Add padding to avoid striking the border */
+    margin-left: 10px; /* Shift title to the right to avoid overlapping with the border */
+    background-color: white; /* Ensure the title background matches the GroupBox */
+    font-weight: bold;
+}
+
+
+/* Scroll Bars */
+QScrollBar:vertical {
+    background-color: rgb(51, 55, 69);  /* Dark background */
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgb(230, 52, 98);  /* Red handle */
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: rgb(254, 95, 85);  /* Light red on hover */
+}
+
+/* Text areas */
+QTextEdit, QPlainTextEdit {
+    background-color: white;
+    border: 1px solid rgba(230, 52, 98, 0.3);
+    border-radius: 6px;
+    color: rgb(51, 55, 69);
+    selection-background-color: rgb(230, 52, 98);
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="1" column="0" colspan="2">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QTextEdit" name="terminal"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btnClear">
+        <property name="text">
+         <string>Clear</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QGroupBox" name="grpSendData">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="title">
+       <string>Send Progress</string>
+      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Shown Assignment</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="assignmentSubPart"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Test Cases</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Issue</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="message">
+         <property name="text">
+          <string>None</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="addPassedAssignments">
+         <property name="text">
+          <string>Add Assignment</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="btnSend">
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="assignments">
+         <property name="currentText">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <layout class="QVBoxLayout" name="difficultyLayout"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Connection Information</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>IP Address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="ipAddress">
+         <property name="inputMask">
+          <string>000.000.000.000;_</string>
+         </property>
+         <property name="placeholderText">
+          <string>127.0.0.1</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="state" stdset="0">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>IP Address</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="portNum">
+         <property name="minimum">
+          <number>1024</number>
+         </property>
+         <property name="maximum">
+          <number>65535</number>
+         </property>
+         <property name="value">
+          <number>12345</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="name">
+         <property name="text">
+          <string>r</string>
+         </property>
+         <property name="placeholderText">
+          <string>r</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Roll Number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="rollNum">
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="placeholderText">
+          <string>1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QPushButton" name="btnConnect">
+         <property name="text">
+          <string>Connect</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnClear</sender>
+   <signal>clicked()</signal>
+   <receiver>terminal</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>589</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
